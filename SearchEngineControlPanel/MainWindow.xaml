@@ -1,0 +1,87 @@
+﻿<Window x:Class="SearchEngineControlPanel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:local="clr-namespace:SearchEngineControlPanel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" FlowDirection="RightToLeft" Margin="10,5,10,5">افزودن دانه :</TextBlock>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="SeedTextBox" Grid.Column="2" Margin="10,5,10,5"></TextBox>
+                <Button x:Name="SeedAddButton" Grid.Column="1" Margin="10,5,10,5" Click="SeedAddButton_Click">افزودن</Button>
+                <fa:ImageAwesome Name="AddSeedLoading" Icon="Spinner" Spin="True" SpinDuration="4"  Grid.Column="0" MaxWidth="20" MaxHeight="20" Visibility="Hidden"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Name="StartCrawl" Content="شروع خزش" Grid.Column="2" Grid.Row="0" Margin="10,5,10,5" Click="StartCrawl_Click"></Button>
+            <Button Name="StopCrawl" Content="پایان خزش" Grid.Column="1" Grid.Row="0" Margin="10,5,10,5" IsEnabled="False" Click="StopCrawl_Click"></Button>
+            <fa:ImageAwesome Name="CrawlLoading" Icon="Spinner" Spin="True" SpinDuration="4"  Grid.Column="0" Grid.Row="0" MaxWidth="20" MaxHeight="20" Visibility="Hidden"/>
+            <Button Name="StartIndexing" Content="شروع نمایه سازی" Grid.Column="2" Grid.Row="1" Margin="10,5,10,5" Click="StartIndexing_Click"></Button>
+            <Button Name="StopIndexing" Content="پایان نمایه سازی" Grid.Column="1" Grid.Row="1" Margin="10,5,10,5" IsEnabled="False" Click="StopIndexing_Click"></Button>
+            <fa:ImageAwesome Name="IndexLoading" Icon="Spinner" Spin="True" SpinDuration="4"  Grid.Column="0" Grid.Row="1" MaxWidth="20" MaxHeight="20" Visibility="Hidden"/>
+        </Grid>
+        <TabControl FlowDirection="RightToLeft" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0">
+            <TabItem Header="صفحات">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Row="0" Grid.Column="1" Margin="10,5,10,5" Name="RefreshLinksListButton" Click="RefreshLinksListButton_Click" >
+                        <fa:ImageAwesome Name="RefreshLinksListButtonIcon" Icon="Refresh" MaxWidth="20" MaxHeight="20" MinWidth="20" MinHeight="20" Foreground="DarkGreen"/>
+                    </Button>
+                    <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Name="LinksList" FlowDirection="RightToLeft" AlternationCount = "2" AutoGenerateColumns = "False" Margin="10,5,10,5">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="لینک" Binding="{Binding Url}"/>
+                            <DataGridTextColumn Header="وضعیت" Binding="{Binding Status}"/>
+                            <DataGridTextColumn Header="نمایه سازی شده" Binding="{Binding Indexed}"/>
+                            <DataGridTextColumn Header="عنوان" Binding="{Binding Title}"/>
+                            <DataGridTextColumn Header="کلمات کلیدی" Binding="{Binding Keywords}"/>
+                            <DataGridTextColumn Header="نوع سند" Binding="{Binding DocumentTypeString}"/>
+                            <DataGridTextColumn Header="توضیحات" Binding="{Binding Description}"/>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            
+        </TabControl>
+        
+    </Grid>
+</Window>

@@ -1,0 +1,16 @@
+﻿<Window x:Class="SearchEngineControll.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SearchEngineControll"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="Seed" HorizontalAlignment="Left" Margin="670,30,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="AddSeedButton" Content="Add" HorizontalAlignment="Left" Margin="604,33,0,0" VerticalAlignment="Top" Click="AddSeedButton_Click"/>
+        <Button Content="Crawl" HorizontalAlignment="Left" Margin="754,91,0,0" VerticalAlignment="Top"/>
+        <Button Content="Index" HorizontalAlignment="Left" Margin="604,91,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
